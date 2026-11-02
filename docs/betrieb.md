@@ -4,7 +4,7 @@
 
 | Komponente | Aufgabe |
 |---|---|
-| PostgreSQL mit PostGIS | Zieldatenbank mit den vorhandenen Tabellen (z. B. MOSIDI: `dashboard_data_de`, `table_metadata`, Geometrietabellen) und dem eigenen Schema `pipeline_meta` der Pipeline. Geprüft mit PostgreSQL 16 / PostGIS 3.4 und PostgreSQL 18 / PostGIS 3.6. |
+| PostgreSQL mit PostGIS | Zieldatenbank mit den vorhandenen Tabellen (z. B. MOSIDI: `dashboard_data_de`, `table_metadata`, Geometrietabellen) und dem eigenen Schema `pipeline_meta` der Pipeline. Geprüft mit PostgreSQL 16 / PostGIS 3.4, 17 / PostGIS 3.5 und 18 / PostGIS 3.6. |
 | `geoimport` (Python 3.12) | Import-Pipeline: CLI, Zeitsteuerung, Bericht |
 | `config/` | `pipeline.yml` (global) und je Quelle eine YAML-Datei in `config/sources/` |
 | `reports/` bzw. Volume `reports` | Import-Berichte (JSON, optional Markdown) |

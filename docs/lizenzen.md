@@ -80,8 +80,8 @@ enthalten sind alle Pakete, die `pip install geoimport` installiert.
 | Komponente | Lizenz | Hinweis |
 |---|---|---|
 | Python 3.12 (Basis-Image `python:3.12-slim`) | PSF-2.0, Debian-Pakete unter ihren jeweiligen freien Lizenzen | |
-| PostgreSQL (geprüft mit 16 und 18) | PostgreSQL-Lizenz (freizügig) | eigenständiger Datenbankserver |
-| PostGIS (geprüft mit 3.4 und 3.6; Image `postgis/postgis`) | GPL-2.0-or-later | läuft als Erweiterung im eigenen Datenbankcontainer; `geoimport` spricht ihn nur über das PostgreSQL-Netzwerkprotokoll an und wird weder mit PostGIS gebunden noch zusammen verbreitet |
+| PostgreSQL (geprüft mit 16, 17 und 18) | PostgreSQL-Lizenz (freizügig) | eigenständiger Datenbankserver |
+| PostGIS (geprüft mit 3.4, 3.5 und 3.6; Image `postgis/postgis`) | GPL-2.0-or-later | läuft als Erweiterung im eigenen Datenbankcontainer; `geoimport` spricht ihn nur über das PostgreSQL-Netzwerkprotokoll an und wird weder mit PostGIS gebunden noch zusammen verbreitet |
 
 ## Testdaten
 

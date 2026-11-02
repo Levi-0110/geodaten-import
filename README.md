@@ -1,5 +1,7 @@
 # geodaten-import (`geoimport`)
 
+[![Tests](https://github.com/Levi-0110/geodaten-import/actions/workflows/tests.yml/badge.svg)](https://github.com/Levi-0110/geodaten-import/actions/workflows/tests.yml)
+
 Geodaten-Import-Pipeline: liest Geodaten und Kennzahlen aus **WFS-Diensten** (OGC
 WFS 2.0.0 und 1.1.0) und **CSV-Dateien** (lokal, per URL oder im ZIP-Archiv, z. B.
 INKAR) und schreibt sie in **vorhandene Tabellen** einer
@@ -137,7 +139,8 @@ INKAR-Datei (`tests/fixtures/QUELLEN.md`) und prüfen unter anderem drei Läufe:
 Erstimport, Lauf mit neuen, geänderten und entfernten Datensätzen (Protokoll,
 Zieltabellen, Bericht; Zeilen anderer Quellen bleiben unberührt) und einen Lauf
 mit einer fehlerhaften Quelle, deren Transaktion zurückgerollt wird. Geprüft mit
-PostgreSQL 16 / PostGIS 3.4 und PostgreSQL 18 / PostGIS 3.6.
+PostgreSQL 16 / PostGIS 3.4, PostgreSQL 17 / PostGIS 3.5 (GitHub Actions, bei
+jeder Änderung) und PostgreSQL 18 / PostGIS 3.6.
 
 ## Mitgelieferte Beispielquellen
 
