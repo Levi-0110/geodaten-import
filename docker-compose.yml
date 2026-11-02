@@ -1,0 +1,69 @@
+# Docker-Compose-Aufbau der Demo, angelehnt an das MOSIDI-System (Dienst brandenburg_db).
+#
+#   cp .env.example .env                 # Zugangsdaten setzen
+#   docker compose up -d --build         # Datenbank + zeitgesteuerte Pipeline starten
+#   docker compose run --rm geoimport run                         # sofort alle Quellen
+#   docker compose run --rm geoimport run --source inkar_gemeinden
+#   docker compose run --rm geoimport check-config
+#   docker compose logs -f geoimport
+#
+# Im MOSIDI-System besteht brandenburg_db bereits; dort wird nur der Dienst
+# geoimport ergänzt (siehe docs/mosidi-integration.md). Zugangsdaten kommen
+# ausschließlich aus der Umgebung bzw. der Datei .env.
+
+name: geoimport
+
+services:
+  brandenburg_db:
+    # wie im MOSIDI-Compose ohne feste Version; für reproduzierbare Umgebungen
+    # kann eine Version festgelegt werden (z. B. postgis/postgis:17-3.5)
+    image: postgis/postgis
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-brandenburg}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?POSTGRES_PASSWORD fehlt - siehe .env.example}
+    volumes:
+      # Ab PostgreSQL 18 (aktuelles postgis/postgis) liegt das Datenverzeichnis unter
+      # /var/lib/postgresql/<Version>; ein Volume unter /var/lib/postgresql/data lässt
+      # den Container dann nicht mehr starten. /var/lib/postgresql passt für alle Versionen.
+      - brandenburg_db:/var/lib/postgresql
+      # Nur Demo: legt beim ersten Start die Zieltabellen so an, wie sie im
+      # MOSIDI-System bestehen (die Pipeline selbst legt sie nie an)
+      - ./demo/mosidi_zieltabellen.sql:/docker-entrypoint-initdb.d/20_mosidi_zieltabellen.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$${POSTGRES_USER}\" -d \"$${POSTGRES_DB}\""]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    # Für lokale Werkzeuge (z. B. QGIS) bei Bedarf nur auf localhost freigeben:
+    # ports:
+    #   - "127.0.0.1:5432:5432"
+
+  geoimport:
+    build: .
+    image: geoimport:0.2.0
+    restart: unless-stopped
+    depends_on:
+      brandenburg_db:
+        condition: service_healthy
+    environment:
+      PGHOST: brandenburg_db
+      PGPORT: "5432"
+      PGDATABASE: ${POSTGRES_DB:-brandenburg}
+      # Im Betrieb eine eigene Rolle ohne DDL-Rechte verwenden (docs/betrieb.md)
+      PGUSER: ${GEOIMPORT_DB_USER:-postgres}
+      PGPASSWORD: ${GEOIMPORT_DB_PASSWORD:?GEOIMPORT_DB_PASSWORD fehlt - siehe .env.example}
+      GEOIMPORT_CONFIG: /config/pipeline.yml
+      GEOIMPORT_REPORT_DIR: /data/reports
+      GEOIMPORT_CRON: ${GEOIMPORT_CRON:-0 3 * * 1}
+      GEOIMPORT_LOG_LEVEL: ${GEOIMPORT_LOG_LEVEL:-INFO}
+      TZ: Europe/Berlin
+    volumes:
+      - ./config:/config:ro
+      - reports:/data/reports
+    command: ["schedule"]
+
+volumes:
+  brandenburg_db:
+  reports:

@@ -1,0 +1,321 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:app="http://www.deegree.org/app" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.deegree.org/app" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <import namespace="http://www.opengis.net/gml/3.2" schemaLocation="http://schemas.opengis.net/gml/3.2.1/gml.xsd"/>
+  <element name="natp_mz" substitutionGroup="gml:AbstractFeature">
+    <complexType>
+      <complexContent>
+        <extension base="gml:AbstractFeatureType">
+          <sequence>
+            <element name="Schutzgebietstyp_kurz" minOccurs="0" type="string"/>
+            <element name="Schutzgebietstyp" minOccurs="0" type="string"/>
+            <element name="Flaechentyp" minOccurs="0" type="string"/>
+            <element name="Gebietsnummer_intern" minOccurs="0" type="string"/>
+            <element name="Gebietsnummer" minOccurs="0" type="string"/>
+            <element name="Schutzstatus" minOccurs="0" type="string"/>
+            <element name="Gebietsname" minOccurs="0" type="string"/>
+            <element name="Schutzanordnung" minOccurs="0" type="string"/>
+            <element name="Inkrafttreten" minOccurs="0" type="string"/>
+            <element name="Bekanntmachung" minOccurs="0" type="string"/>
+            <element name="Flaeche_ha_gesamt" minOccurs="0" type="decimal"/>
+            <element name="the_geom" minOccurs="0" type="gml:SurfacePropertyType"/>
+          </sequence>
+        </extension>
+      </complexContent>
+    </complexType>
+  </element>
+  <element name="natp" substitutionGroup="gml:AbstractFeature">
+    <complexType>
+      <complexContent>
+        <extension base="gml:AbstractFeatureType">
+          <sequence>
+            <element name="Schutzgebietstyp_kurz" minOccurs="0" type="string"/>
+            <element name="Schutzgebietstyp" minOccurs="0" type="string"/>
+            <element name="Gebietsnummer_intern" minOccurs="0" type="string"/>
+            <element name="Gebietsnummer" minOccurs="0" type="string"/>
+            <element name="Schutzstatus" minOccurs="0" type="string"/>
+            <element name="Gebietsname" minOccurs="0" type="string"/>
+            <element name="Schutzanordnung" minOccurs="0" type="string"/>
+            <element name="Inkrafttreten" minOccurs="0" type="string"/>
+            <element name="Bekanntmachung" minOccurs="0" type="string"/>
+            <element name="Flaeche_ha_gesamt" minOccurs="0" type="decimal"/>
+            <element name="the_geom" minOccurs="0" type="gml:SurfacePropertyType"/>
+          </sequence>
+        </extension>
+      </complexContent>
+    </complexType>
+  </element>
+  <element name="lsg" substitutionGroup="gml:AbstractFeature">
+    <complexType>
+      <complexContent>
+        <extension base="gml:AbstractFeatureType">
+          <sequence>
+            <element name="Schutzgebietstyp_kurz" minOccurs="0" type="string"/>
+            <element name="Schutzgebietstyp" minOccurs="0" type="string"/>
+            <element name="Gebietsnummer_intern" minOccurs="0" type="string"/>
+            <element name="Gebietsnummer" minOccurs="0" type="string"/>
+            <element name="Schutzstatus" minOccurs="0" type="string"/>
+            <element name="Gebietsname" minOccurs="0" type="string"/>
+            <element name="Schutzanordnung" minOccurs="0" type="string"/>
+            <element name="Inkrafttreten" minOccurs="0" type="string"/>
+            <element name="Bekanntmachung" minOccurs="0" type="string"/>
+            <element name="Flaeche_ha_gesamt" minOccurs="0" type="decimal"/>
+            <element name="Flaeche_ha_ohne_NSG" minOccurs="0" type="decimal"/>
+            <element name="the_geom" minOccurs="0" type="gml:SurfacePropertyType"/>
+          </sequence>
+        </extension>
+      </complexContent>
+    </complexType>
+  </element>
+  <element name="lsg_mz" substitutionGroup="gml:AbstractFeature">
+    <complexType>
+      <complexContent>
+        <extension base="gml:AbstractFeatureType">
+          <sequence>
+            <element name="Schutzgebietstyp_kurz" minOccurs="0" type="string"/>
+            <element name="Schutzgebietstyp" minOccurs="0" type="string"/>
+            <element name="Flaechentyp" minOccurs="0" type="string"/>
+            <element name="Gebietsnummer_intern" minOccurs="0" type="string"/>
+            <element name="Gebietsnummer" minOccurs="0" type="string"/>
+            <element name="Schutzstatus" minOccurs="0" type="string"/>
+            <element name="Gebietsname" minOccurs="0" type="string"/>
+            <element name="Schutzanordnung" minOccurs="0" type="string"/>
+            <element name="Inkrafttreten" minOccurs="0" type="string"/>
+            <element name="Bekanntmachung" minOccurs="0" type="string"/>
+            <element name="Flaeche_ha_gesamt" minOccurs="0" type="decimal"/>
+            <element name="Flaeche_ha_ohne_NSG" minOccurs="0" type="decimal"/>
+            <element name="the_geom" minOccurs="0" type="gml:SurfacePropertyType"/>
+          </sequence>
+        </extension>
+      </complexContent>
+    </complexType>
+  </element>
+  <element name="np" substitutionGroup="gml:AbstractFeature">
+    <complexType>
+      <complexContent>
+        <extension base="gml:AbstractFeatureType">
+          <sequence>
+            <element name="Schutzgebietstyp_kurz" minOccurs="0" type="string"/>
+            <element name="Schutzgebietstyp" minOccurs="0" type="string"/>
+            <element name="Gebietsnummer_intern" minOccurs="0" type="string"/>
+            <element name="Gebietsnummer" minOccurs="0" type="string"/>
+            <element name="Schutzstatus" minOccurs="0" type="string"/>
+            <element name="Gebietsname" minOccurs="0" type="string"/>
+            <element name="Schutzanordnung" minOccurs="0" type="string"/>
+            <element name="Inkrafttreten" minOccurs="0" type="string"/>
+            <element name="Bekanntmachung" minOccurs="0" type="string"/>
+            <element name="Flaeche_ha_gesamt" minOccurs="0" type="decimal"/>
+            <element name="the_geom" minOccurs="0" type="gml:SurfacePropertyType"/>
+          </sequence>
+        </extension>
+      </complexContent>
+    </complexType>
+  </element>
+  <element name="nsg_mz" substitutionGroup="gml:AbstractFeature">
+    <complexType>
+      <complexContent>
+        <extension base="gml:AbstractFeatureType">
+          <sequence>
+            <element name="Schutzgebietstyp_kurz" minOccurs="0" type="string"/>
+            <element name="Schutzgebietstyp" minOccurs="0" type="string"/>
+            <element name="Flaechentyp" minOccurs="0" type="string"/>
+            <element name="Gebietsnummer_intern" minOccurs="0" type="string"/>
+            <element name="Gebietsnummer" minOccurs="0" type="string"/>
+            <element name="Schutzstatus" minOccurs="0" type="string"/>
+            <element name="Gebietsname" minOccurs="0" type="string"/>
+            <element name="Schutzanordnung" minOccurs="0" type="string"/>
+            <element name="Inkrafttreten" minOccurs="0" type="string"/>
+            <element name="Bekanntmachung" minOccurs="0" type="string"/>
+            <element name="Flaeche_ha_gesamt" minOccurs="0" type="decimal"/>
+            <element name="the_geom" minOccurs="0" type="gml:SurfacePropertyType"/>
+          </sequence>
+        </extension>
+      </complexContent>
+    </complexType>
+  </element>
+  <element name="be_mz" substitutionGroup="gml:AbstractFeature">
+    <complexType>
+      <complexContent>
+        <extension base="gml:AbstractFeatureType">
+          <sequence>
+            <element name="Schutzgebietstyp_kurz" minOccurs="0" type="string"/>
+            <element name="Schutzgebietstyp" minOccurs="0" type="string"/>
+            <element name="Flaechentyp" minOccurs="0" type="string"/>
+            <element name="Gebietsnummer_intern" minOccurs="0" type="string"/>
+            <element name="Gebietsnummer" minOccurs="0" type="string"/>
+            <element name="Schutzstatus" minOccurs="0" type="string"/>
+            <element name="Gebietsname" minOccurs="0" type="string"/>
+            <element name="Schutzanordnung" minOccurs="0" type="string"/>
+            <element name="Inkrafttreten" minOccurs="0" type="string"/>
+            <element name="Bekanntmachung" minOccurs="0" type="string"/>
+            <element name="Flaeche_ha_gesamt" minOccurs="0" type="decimal"/>
+            <element name="the_geom" minOccurs="0" type="gml:SurfacePropertyType"/>
+          </sequence>
+        </extension>
+      </complexContent>
+    </complexType>
+  </element>
+  <element name="ezv" substitutionGroup="gml:AbstractFeature">
+    <complexType>
+      <complexContent>
+        <extension base="gml:AbstractFeatureType">
+          <sequence>
+            <element name="Schutzgebietstyp_kurz" minOccurs="0" type="string"/>
+            <element name="Schutzgebietstyp" minOccurs="0" type="string"/>
+            <element name="Gebietsnummer_intern" minOccurs="0" type="string"/>
+            <element name="Gebietsnummer" minOccurs="0" type="string"/>
+            <element name="Schutzstatus" minOccurs="0" type="string"/>
+            <element name="Gebietsname" minOccurs="0" type="string"/>
+            <element name="Schutzanordnung" minOccurs="0" type="string"/>
+            <element name="Inkrafttreten" minOccurs="0" type="string"/>
+            <element name="Bekanntmachung" minOccurs="0" type="string"/>
+            <element name="Flaeche_ha_gesamt" minOccurs="0" type="decimal"/>
+            <element name="the_geom" minOccurs="0" type="gml:SurfacePropertyType"/>
+          </sequence>
+        </extension>
+      </complexContent>
+    </complexType>
+  </element>
+  <element name="be" substitutionGroup="gml:AbstractFeature">
+    <complexType>
+      <complexContent>
+        <extension base="gml:AbstractFeatureType">
+          <sequence>
+            <element name="Schutzgebietstyp_kurz" minOccurs="0" type="string"/>
+            <element name="Schutzgebietstyp" minOccurs="0" type="string"/>
+            <element name="Gebietsnummer_intern" minOccurs="0" type="string"/>
+            <element name="Gebietsnummer" minOccurs="0" type="string"/>
+            <element name="Schutzstatus" minOccurs="0" type="string"/>
+            <element name="Gebietsname" minOccurs="0" type="string"/>
+            <element name="Schutzanordnung" minOccurs="0" type="string"/>
+            <element name="Inkrafttreten" minOccurs="0" type="string"/>
+            <element name="Bekanntmachung" minOccurs="0" type="string"/>
+            <element name="Flaeche_ha_gesamt" minOccurs="0" type="decimal"/>
+            <element name="the_geom" minOccurs="0" type="gml:SurfacePropertyType"/>
+          </sequence>
+        </extension>
+      </complexContent>
+    </complexType>
+  </element>
+  <element name="ffh" substitutionGroup="gml:AbstractFeature">
+    <complexType>
+      <complexContent>
+        <extension base="gml:AbstractFeatureType">
+          <sequence>
+            <element name="Schutzgebietstyp_kurz" minOccurs="0" type="string"/>
+            <element name="Schutzgebietstyp" minOccurs="0" type="string"/>
+            <element name="Gebietsnummer_intern" minOccurs="0" type="decimal"/>
+            <element name="Gebietsname" minOccurs="0" type="string"/>
+            <element name="Gebietsnummer" minOccurs="0" type="string"/>
+            <element name="Flaeche_ha" minOccurs="0" type="decimal"/>
+            <element name="Link_Standarddatenbogen" minOccurs="0" type="string"/>
+            <element name="the_geom" minOccurs="0" type="gml:SurfacePropertyType"/>
+          </sequence>
+        </extension>
+      </complexContent>
+    </complexType>
+  </element>
+  <element name="spa" substitutionGroup="gml:AbstractFeature">
+    <complexType>
+      <complexContent>
+        <extension base="gml:AbstractFeatureType">
+          <sequence>
+            <element name="Schutzgebietstyp_kurz" minOccurs="0" type="string"/>
+            <element name="Schutzgebietstyp" minOccurs="0" type="string"/>
+            <element name="Gebietsnummer_intern" minOccurs="0" type="decimal"/>
+            <element name="Gebietsname" minOccurs="0" type="string"/>
+            <element name="Gebietsnummer" minOccurs="0" type="string"/>
+            <element name="Flaeche_ha" minOccurs="0" type="decimal"/>
+            <element name="Link_Standarddatenbogen" minOccurs="0" type="string"/>
+            <element name="the_geom" minOccurs="0" type="gml:SurfacePropertyType"/>
+          </sequence>
+        </extension>
+      </complexContent>
+    </complexType>
+  </element>
+  <element name="br" substitutionGroup="gml:AbstractFeature">
+    <complexType>
+      <complexContent>
+        <extension base="gml:AbstractFeatureType">
+          <sequence>
+            <element name="Schutzgebietstyp_kurz" minOccurs="0" type="string"/>
+            <element name="Schutzgebietstyp" minOccurs="0" type="string"/>
+            <element name="Gebietsnummer_intern" minOccurs="0" type="string"/>
+            <element name="Gebietsnummer" minOccurs="0" type="string"/>
+            <element name="Schutzstatus" minOccurs="0" type="string"/>
+            <element name="Gebietsname" minOccurs="0" type="string"/>
+            <element name="Schutzanordnung" minOccurs="0" type="string"/>
+            <element name="Inkrafttreten" minOccurs="0" type="string"/>
+            <element name="Bekanntmachung" minOccurs="0" type="string"/>
+            <element name="Flaeche_ha_gesamt" minOccurs="0" type="decimal"/>
+            <element name="the_geom" minOccurs="0" type="gml:SurfacePropertyType"/>
+          </sequence>
+        </extension>
+      </complexContent>
+    </complexType>
+  </element>
+  <element name="np_mz" substitutionGroup="gml:AbstractFeature">
+    <complexType>
+      <complexContent>
+        <extension base="gml:AbstractFeatureType">
+          <sequence>
+            <element name="Schutzgebietstyp_kurz" minOccurs="0" type="string"/>
+            <element name="Schutzgebietstyp" minOccurs="0" type="string"/>
+            <element name="Flaechentyp" minOccurs="0" type="string"/>
+            <element name="Gebietsnummer_intern" minOccurs="0" type="string"/>
+            <element name="Gebietsnummer" minOccurs="0" type="string"/>
+            <element name="Schutzstatus" minOccurs="0" type="string"/>
+            <element name="Gebietsname" minOccurs="0" type="string"/>
+            <element name="Schutzanordnung" minOccurs="0" type="string"/>
+            <element name="Inkrafttreten" minOccurs="0" type="string"/>
+            <element name="Bekanntmachung" minOccurs="0" type="string"/>
+            <element name="Flaeche_ha_gesamt" minOccurs="0" type="decimal"/>
+            <element name="the_geom" minOccurs="0" type="gml:SurfacePropertyType"/>
+          </sequence>
+        </extension>
+      </complexContent>
+    </complexType>
+  </element>
+  <element name="br_mz" substitutionGroup="gml:AbstractFeature">
+    <complexType>
+      <complexContent>
+        <extension base="gml:AbstractFeatureType">
+          <sequence>
+            <element name="Schutzgebietstyp_kurz" minOccurs="0" type="string"/>
+            <element name="Schutzgebietstyp" minOccurs="0" type="string"/>
+            <element name="Flaechentyp" minOccurs="0" type="string"/>
+            <element name="Gebietsnummer_intern" minOccurs="0" type="string"/>
+            <element name="Gebietsnummer" minOccurs="0" type="string"/>
+            <element name="Schutzstatus" minOccurs="0" type="string"/>
+            <element name="Gebietsname" minOccurs="0" type="string"/>
+            <element name="Schutzanordnung" minOccurs="0" type="string"/>
+            <element name="Inkrafttreten" minOccurs="0" type="string"/>
+            <element name="Bekanntmachung" minOccurs="0" type="string"/>
+            <element name="Flaeche_ha_gesamt" minOccurs="0" type="decimal"/>
+            <element name="the_geom" minOccurs="0" type="gml:SurfacePropertyType"/>
+          </sequence>
+        </extension>
+      </complexContent>
+    </complexType>
+  </element>
+  <element name="nsg" substitutionGroup="gml:AbstractFeature">
+    <complexType>
+      <complexContent>
+        <extension base="gml:AbstractFeatureType">
+          <sequence>
+            <element name="Schutzgebietstyp_kurz" minOccurs="0" type="string"/>
+            <element name="Schutzgebietstyp" minOccurs="0" type="string"/>
+            <element name="Gebietsnummer_intern" minOccurs="0" type="string"/>
+            <element name="Gebietsnummer" minOccurs="0" type="string"/>
+            <element name="Schutzstatus" minOccurs="0" type="string"/>
+            <element name="Gebietsname" minOccurs="0" type="string"/>
+            <element name="Schutzanordnung" minOccurs="0" type="string"/>
+            <element name="Inkrafttreten" minOccurs="0" type="string"/>
+            <element name="Bekanntmachung" minOccurs="0" type="string"/>
+            <element name="Flaeche_ha_gesamt" minOccurs="0" type="decimal"/>
+            <element name="the_geom" minOccurs="0" type="gml:SurfacePropertyType"/>
+          </sequence>
+        </extension>
+      </complexContent>
+    </complexType>
+  </element>
+</schema>

@@ -1,0 +1,50 @@
+# Ortsteile der Stadt Brandenburg an der Havel aus dem WFS Verwaltungsgrenzen der LGB
+# (Geobasis Brandenburg). Der Dienst liefert nur GML (kein GeoJSON) und ist damit das
+# Beispiel für den GML-Pfad; Abruf in EPSG:25833, gespeichert in EPSG:4326.
+id: lgb_ortsteile_brb
+type: wfs
+title: Ortsteile der Stadt Brandenburg an der Havel
+url: https://isk.geobasis-bb.de/ows/vg_wfs
+type_name: app:otl
+namespaces:
+  app: http://www.deegree.org/app
+version: auto
+output_format: auto
+srs_name: urn:ogc:def:crs:EPSG::25833
+geometry_field: geom
+# Der Dienst meldet ImplementsResultPaging=FALSE, verarbeitet STARTINDEX/COUNT aber
+# korrekt (geprüft); daher Paginierung erzwingen. Wiederholte Seiten würden erkannt.
+paging: always
+# Demo: kleine Seitengröße, damit die Paginierung sichtbar ist (produktiv z. B. 1000)
+page_size: 3
+sort_by: app:otls
+filter: |
+  <fes:Filter xmlns:fes="http://www.opengis.net/fes/2.0" xmlns:app="http://www.deegree.org/app">
+    <fes:PropertyIsEqualTo>
+      <fes:ValueReference>app:ags</fes:ValueReference>
+      <fes:Literal>12051000</fes:Literal>
+    </fes:PropertyIsEqualTo>
+  </fes:Filter>
+key_fields: otls
+attributes:
+  otls: ortsteil_schluessel
+  ags: gemeinde_schluessel
+  otl_name: name
+  otl_art: art
+  otl_regspr_name: name_regionalsprache
+  otl_aktualitaet: stand
+target:
+  table: Geometrien (Demo)
+  source_column: source
+  source_value: "LGB Verwaltungsgrenzen: Ortsteile"
+  columns:
+    geo_ref: "@key"
+    name: name
+  geometry_column: geom
+metadata:
+  provider: Landesvermessung und Geobasisinformation Brandenburg (LGB)
+  licence: Datenlizenz Deutschland – Namensnennung – Version 2.0 (dl-de/by-2-0)
+  licence_url: https://www.govdata.de/dl-de/by-2-0
+  attribution: "© GeoBasis-DE/LGB, dl-de/by-2-0"
+  update_cycle: vierteljährlich
+  description: WFS BB-BE VG (Verwaltungsgrenzen Berlin/Brandenburg), Feature-Typ Ortsteile

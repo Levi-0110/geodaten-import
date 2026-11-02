@@ -1,0 +1,11 @@
+geodaten-import (geoimport)
+Copyright 2026 Levi Fox Griesinger
+
+Lizenziert unter der Apache License, Version 2.0 (siehe Datei LICENSE).
+
+Die Testdaten unter tests/fixtures stammen aus öffentlichen Quellen und
+stehen unter den Lizenzen der jeweiligen Anbieter (siehe
+tests/fixtures/QUELLEN.md):
+- © GeoBasis-DE/LGB, dl-de/by-2-0 (Daten geändert)
+- © Landesamt für Umwelt Brandenburg, dl-de/by-2-0
+- Bundesnetzagentur, Ladesäulenregister, CC BY 4.0 (über opendata.potsdam.de)

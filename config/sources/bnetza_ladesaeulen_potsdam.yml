@@ -1,0 +1,45 @@
+# Ladesäulen in Potsdam (Ladesäulenregister der Bundesnetzagentur, über das
+# Open-Data-Portal der Landeshauptstadt Potsdam). Beispiel für eine CSV-Quelle per URL
+# mit Punktgeometrie aus Länge/Breite.
+id: bnetza_ladesaeulen_potsdam
+type: csv
+title: Ladesäulen in Potsdam
+url: https://opendata.potsdam.de/api/explore/v2.1/catalog/datasets/ladesaeulenregister/exports/csv
+delimiter: ";"
+encoding: utf-8
+decimal: "."
+geometry:
+  type: lonlat
+  lon: langengrad
+  lat: breitengrad
+source_crs: EPSG:4326
+key_fields: ladeeinrichtungs_id
+# Das Register enthält vereinzelt Einträge ohne Koordinaten; bis 2 % gelten noch als
+# vollständiger Abruf (die Einträge werden im Bericht als Warnung ausgewiesen)
+max_skipped_ratio: 0.02
+attributes:
+  betreiber: betreiber
+  strasse: strasse
+  hausnummer: hausnummer
+  postleitzahl: plz
+  ort: ort
+  art_der_ladeeinrichtung: art
+  anzahl_ladepunkte: anzahl_ladepunkte
+  nennleistung_ladeeinrichtung_kw: leistung_kw
+  inbetriebnahmedatum: inbetriebnahme
+  status: status
+target:
+  table: Geometrien (Demo)
+  source_column: source
+  source_value: BNetzA Ladesäulenregister
+  columns:
+    geo_ref: "@key"
+    name: betreiber
+  geometry_column: geom
+metadata:
+  provider: Bundesnetzagentur (Bereitstellung über opendata.potsdam.de)
+  licence: Creative Commons Namensnennung 4.0 (CC BY 4.0)
+  licence_url: https://creativecommons.org/licenses/by/4.0/
+  attribution: "Bundesnetzagentur, Ladesäulenregister"
+  update_cycle: keine Angabe des Anbieters
+  description: Ladeeinrichtungen im Stadtgebiet Potsdam

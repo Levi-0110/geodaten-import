@@ -1,0 +1,61 @@
+# Naturschutzgebiete im Raum Brandenburg an der Havel aus dem WFS Schutzgebiete des LfU.
+# Der Dienst bietet GeoJSON an (Koordinaten dann in EPSG:4326) – Beispiel für den GeoJSON-Pfad
+# und für eine themenbezogene Tabelle, die nur dieser Quelle gehört (exclusive).
+id: lfu_nsg_brb
+type: wfs
+title: Naturschutzgebiete im Raum Brandenburg an der Havel
+url: https://inspire.brandenburg.de/services/schutzg_wfs
+type_name: app:nsg
+output_format: auto
+bbox: [321000, 5796800, 345200, 5815700]
+bbox_crs: urn:ogc:def:crs:EPSG::25833
+sort_by: app:Gebietsnummer
+# Der Dienst meldet ImplementsResultPaging=FALSE, verarbeitet STARTINDEX/COUNT aber
+# korrekt (geprüft); daher Paginierung erzwingen. Wiederholte Seiten würden erkannt.
+paging: always
+# Demo: kleine Seitengröße, damit die Paginierung sichtbar ist (produktiv z. B. 1000)
+page_size: 4
+key_fields: Gebietsnummer
+# Einige Gebiete bestehen aus mehreren Teilflächen mit derselben Gebietsnummer
+duplicate_keys: merge
+attributes:
+  Gebietsnummer: gebietsnummer
+  Gebietsname: name
+  Schutzgebietstyp: typ
+  Schutzstatus: schutzstatus
+  Inkrafttreten: inkrafttreten
+# Flaeche_ha_gesamt bezieht sich in der Quelle auf die einzelne Teilfläche und wird daher
+# nicht übernommen.
+target:
+  table: Naturschutzgebiete
+  exclusive: true
+  columns:
+    gebietsnummer: gebietsnummer
+    name: name
+    typ: typ
+    schutzstatus: schutzstatus
+    inkrafttreten: inkrafttreten
+  geometry_column: geom
+metadata_record:
+  table: table_metadata
+  key_columns:
+    table_name: Naturschutzgebiete
+    dcatde_politicalgeocodingleveluri: http://dcat-ap.de/def/politicalGeocoding/Level/state
+  columns:
+    dct_title: "{title}"
+    dct_description: "{description}"
+    dct_catalog_publisher: "{provider}"
+    dct_license: "{licence}"
+    dct_accessurl: "{url}"
+    dct_identifier: "{id}"
+    dct_language: de
+    geometry_type: MULTIPOLYGON
+    dct_modified: "{run_time}"
+    imported: "{run_time}"
+metadata:
+  provider: Landesamt für Umwelt Brandenburg (LfU), Dienst betrieben von der LGB
+  licence: Datenlizenz Deutschland – Namensnennung – Version 2.0 (dl-de/by-2-0)
+  licence_url: https://www.govdata.de/dl-de/by-2-0
+  attribution: "© Landesamt für Umwelt Brandenburg"
+  update_cycle: keine Angabe des Anbieters
+  description: WFS Schutzgebiete BB (WFS-LFU-SCHUTZG), Feature-Typ Naturschutzgebiete (NSG)

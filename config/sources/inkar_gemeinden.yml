@@ -1,0 +1,69 @@
+# INKAR (BBSR): Indikatoren je Gemeinde in Brandenburg -> Attributtabelle dashboard_data_de.
+# Ausgangsbasis sind die Spalten und Filter der bestehenden Skripte
+# (MOSIDI services/backend/src/inkar_import: Download inkar_<jahr>.zip, Raumbezug "Gemeinden").
+# Die Datei wird gestreamt; auch die Gesamtdatei für Deutschland passt so in wenig Speicher.
+id: inkar_gemeinden
+type: csv
+title: INKAR – Indikatoren je Gemeinde (Brandenburg)
+url: https://www.bbr-server.de/imagemap/inkar/download/inkar_{year}.zip
+# Neueste Jahresdatei suchen: aktuelles Jahr + 1, dann bis zu 5 Jahre zurück
+latest_year:
+  back: 5
+archive_member: "inkar*.csv"
+delimiter: ";"
+encoding: utf-8
+decimal: ","
+row_filter:
+  Raumbezug: Gemeinden
+  # Nur Brandenburg; für ganz Deutschland diese Zeile entfernen
+  Kennziffer: "12*"
+numeric_fields: [Wert]
+# AGS immer achtstellig (führende Nullen, z. B. 01001000), damit die Verknüpfung
+# mit den Gemeindegeometrien eindeutig ist
+zero_pad:
+  Kennziffer: 8
+# Fachlicher Schlüssel laut Abstimmung: Kennziffer, Bereich, Kürzel, Indikator, Zeitbezug
+key_fields: [Kennziffer, Bereich, Kürzel, Indikator, Zeitbezug]
+attributes:
+  Kennziffer: kennziffer
+  Indikator: indikator
+  Zeitbezug: zeitbezug
+  Wert: wert
+duplicate_keys: error
+max_delete_ratio: 0.2
+# Monatlich am 2. um 04:00 (INKAR wird höchstens monatlich aktualisiert)
+schedule: "0 4 2 * *"
+target:
+  table: dashboard_data_de
+  source_column: source
+  source_value: INKAR (BBSR)
+  columns:
+    kennziffer: kennziffer
+    indikator: indikator
+    zeitbezug: zeitbezug
+    wert: wert
+  constants:
+    granularity: Gemeindeebene
+metadata_record:
+  table: table_metadata
+  key_columns:
+    table_name: "dashboard_data_de: {source_value}"
+    dcatde_politicalgeocodingleveluri: http://dcat-ap.de/def/politicalGeocoding/Level/municipality
+  columns:
+    dct_title: "{title}"
+    dct_description: "{description}"
+    dct_catalog_publisher: "{provider}"
+    dct_license: "{licence}"
+    dct_accessurl: "{url}"
+    dct_identifier: "{id}"
+    dct_language: de
+    dct_accrualperiodicity: "{update_cycle}"
+    dct_modified: "{run_time}"
+    imported: "{run_time}"
+metadata:
+  provider: Bundesinstitut für Bau-, Stadt- und Raumforschung (BBSR)
+  licence: Datenlizenz Deutschland – Namensnennung – Version 2.0 (dl-de/by-2-0)
+  licence_url: https://www.govdata.de/dl-de/by-2-0
+  attribution: "INKAR, BBSR Bonn"
+  update_cycle: jährlich (Jahresversion)
+  description: Indikatoren und Karten zur Raum- und Stadtentwicklung, Raumbezug Gemeinden

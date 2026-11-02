@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Laufzeit
+reports/
+*.log
+
+# Zugangsdaten
+.env
+secrets/
+
+# Lokale Testdatenbank (scripts/test-datenbank.sh)
+.pgtest/

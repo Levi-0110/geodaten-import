@@ -1,0 +1,32 @@
+# Globale Einstellungen der Geodaten-Import-Pipeline.
+# Zugangsdaten stehen nicht hier, sondern in Umgebungsvariablen (siehe .env.example).
+# In allen Werten sind ${VAR} und ${VAR:-standard} erlaubt.
+
+database:
+  # Einheitliches Ziel-KBS aller Geometrien (Vorgabe: EPSG:4326)
+  target_srid: 4326
+  # Eigenes Schema der Pipeline (Importsteuerung, Änderungsprotokoll); die
+  # Zieltabellen selbst werden nie angelegt oder verändert
+  meta_schema: pipeline_meta
+
+schedule:
+  # Standardtakt (Minute Stunde Tag Monat Wochentag) für Quellen ohne eigenes "schedule"
+  cron: "${GEOIMPORT_CRON:-0 3 * * 1}"
+  timezone: Europe/Berlin
+  run_on_start: false
+
+report:
+  # Relativ zu dieser Datei oder absolut; im Container /data/reports
+  directory: "${GEOIMPORT_REPORT_DIR:-../reports}"
+  write_latest: true
+  # Zusätzlich zur JSON-Datei eine lesbare Zusammenfassung (Markdown)
+  markdown: true
+
+http:
+  timeout_seconds: 120
+  retries: 3
+  backoff_seconds: 2
+  user_agent: "geoimport/0.2"
+
+# Jede Datei in diesem Verzeichnis beschreibt eine Quelle
+sources_dir: sources
