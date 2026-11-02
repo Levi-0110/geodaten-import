@@ -1,0 +1,40 @@
+# Prüft jede Änderung: Lint, Format, Unit- und End-to-End-Tests gegen PostGIS.
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      postgis:
+        image: postgis/postgis:17-3.5
+        env:
+          POSTGRES_USER: geoimport
+          POSTGRES_PASSWORD: geoimport
+          POSTGRES_DB: geoimport_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U geoimport -d geoimport_test"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Abhängigkeiten
+        run: pip install -e '.[dev]' "ruff==0.17.3"
+      - name: Lint und Format
+        run: ruff check . && ruff format --check .
+      - name: Tests (inkl. End-to-End gegen PostGIS)
+        env:
+          GEOIMPORT_TEST_DSN: postgresql://geoimport:geoimport@localhost:5432/geoimport_test
+        run: pytest
